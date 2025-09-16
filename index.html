@@ -1,0 +1,382 @@
+<!--
+파일 목록 (복사해서 각각의 파일로 저장하세요):
+- index.html
+- about.html
+- contact.html
+- assets/style.css
+- assets/hero.jpg (권장: 1920x1080, webp/jpg)
+- assets/firefly-1.jpg, firefly-2.jpg (갤러리용)
+-->
+
+<!-- FILE: index.html -->
+<!doctype html>
+<html lang="ko">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <title>제주 반딧불 야간체험 — Jeju Firefly Night</title>
+  <meta name="description" content="제주의 밤숲에서 반딧불과 별빛을 함께 보는 모던한 야간 체험. 한정 인원, 자연 보전 중심의 감성 투어입니다.">
+  <link rel="stylesheet" href="assets/style.css">
+  <style>
+    /* Index-specific modern styles */
+    .hero {position:relative;min-height:84vh;display:flex;align-items:center;padding:3rem 1rem;background:linear-gradient(180deg, rgba(2,6,12,0.7), rgba(4,16,37,0.9));overflow:hidden}
+    .hero-grid{display:grid;grid-template-columns:1fr 480px;gap:2rem;align-items:center;width:100%;max-width:var(--container);margin:0 auto}
+    .hero-left{color:#fff}
+    .kicker{display:inline-block;background:linear-gradient(90deg,var(--accent),#b8ff9a);padding:0.35rem 0.6rem;border-radius:999px;font-weight:700;color:#012;margin-bottom:1rem}
+    h1.big{font-size:2.1rem;line-height:1.05;margin:0 0 0.6rem}
+    p.lead{color:var(--muted);margin-bottom:1.2rem;font-size:1.03rem}
+    .ctas{display:flex;gap:0.8rem;flex-wrap:wrap}
+    .panel{background:linear-gradient(180deg, rgba(255,255,255,0.04), rgba(255,255,255,0.02));backdrop-filter:blur(6px);border-radius:14px;padding:1.25rem;box-shadow:0 6px 30px rgba(2,6,12,0.6)}
+    .meta{display:flex;gap:0.8rem;flex-wrap:wrap;margin-top:1rem}
+    .meta .item{display:flex;flex-direction:column}
+    .meta .label{font-size:0.78rem;color:var(--muted)}
+    .meta .val{font-weight:700}
+
+    /* Firefly field */
+    .firefly-field{position:relative;height:420px;border-radius:14px;overflow:hidden;background:radial-gradient(ellipse at 20% 15%, rgba(126,224,107,0.06) 0%, transparent 15%), url('../assets/hero.jpg') center/cover no-repeat}
+    .firefly{position:absolute;width:8px;height:8px;border-radius:50%;filter:blur(6px);mix-blend-mode:screen;box-shadow:0 0 10px rgba(127,224,107,0.95);opacity:0}
+
+    @keyframes floaty {
+      0%{transform:translateY(0) translateX(0) scale(0.9);opacity:0}
+      20%{opacity:1}
+      50%{transform:translateY(-18px) translateX(12px) scale(1)}
+      80%{opacity:1}
+      100%{transform:translateY(0) translateX(-8px) scale(0.9);opacity:0}
+    }
+
+    /* features */
+    .features{display:grid;grid-template-columns:repeat(3,1fr);gap:1rem;margin-top:2rem}
+    .feature{background:transparent;padding:1rem;border-radius:10px;text-align:center}
+    .feature h4{margin:0 0 0.5rem}
+
+    /* subtle star background */
+    .stars{position:absolute;inset:0;pointer-events:none;opacity:0.35;background-image:radial-gradient(#fff 1px, transparent 1px);background-size:6px 6px;mix-blend-mode:screen;filter:blur(1px)}
+
+    /* responsiveness */
+    @media(max-width:980px){
+      .hero-grid{grid-template-columns:1fr}
+      .firefly-field{height:320px}
+      .hero{padding:2rem 0}
+      h1.big{font-size:1.6rem}
+      .features{grid-template-columns:1fr}
+    }
+  </style>
+</head>
+<body>
+  <header class="site-header">
+    <div class="container header-inner">
+      <a class="brand" href="index.html">Jeju Firefly Night</a>
+      <nav class="main-nav">
+        <a href="index.html">행사소개</a>
+        <a href="about.html">프로그램 안내</a>
+        <a href="contact.html">오시는 길</a>
+        <a href="https://www.notion.so/your-notion-page" target="_blank" rel="noopener">업체소개</a>
+        <a class="btn" href="https://forms.gle/your-google-form" target="_blank" rel="noopener">지금 접수</a>
+      </nav>
+      <button class="nav-toggle" aria-label="메뉴 열기">☰</button>
+    </div>
+  </header>
+
+  <main>
+    <section class="hero">
+      <div class="hero-grid">
+        <div class="hero-left">
+          <span class="kicker">한정 출시 · 소규모</span>
+          <h1 class="big">제주의 밤, 반딧불이 안내하는 비밀의 산책</h1>
+          <p class="lead">자연을 먼저 생각하는 감성 투어. 전문가 가이드와 함께하는 야간 생태 관찰로, 반딧불의 빛과 제주 밤하늘을 가장 안전하고 특별하게 만나는 방법입니다.</p>
+
+          <div class="ctas">
+            <a class="btn large" href="about.html">프로그램 보기</a>
+            <a class="btn ghost" href="https://forms.gle/your-google-form" target="_blank" rel="noopener">빠른 접수</a>
+          </div>
+
+          <div class="panel" style="margin-top:1.25rem">
+            <div style="display:flex;justify-content:space-between;align-items:center">
+              <div>
+                <div class="label">다음 일정</div>
+                <div class="val">9월 27일 (토) · 19:00</div>
+              </div>
+              <div>
+                <div class="label">참가비</div>
+                <div class="val">성인 35,000원</div>
+              </div>
+            </div>
+            <div class="meta">
+              <div class="item"><span class="label">정원</span><strong class="val">최대 20명</strong></div>
+              <div class="item"><span class="label">소요시간</span><strong class="val">약 2시간</strong></div>
+            </div>
+          </div>
+
+          <div class="features" aria-hidden="true">
+            <div class="feature"><h4>생태 중심</h4><p class="note">저조도·저소음 관찰</p></div>
+            <div class="feature"><h4>전문 가이드</h4><p class="note">현지 생태 전문가의 해설</p></div>
+            <div class="feature"><h4>감성 포토존</h4><p class="note">플래시 없이도 아름다운 순간</p></div>
+          </div>
+        </div>
+
+        <div>
+          <div class="firefly-field panel" id="field" aria-hidden="true">
+            <div class="stars"></div>
+            <!-- fireflies generated by JS -->
+          </div>
+          <p style="color:var(--muted);font-size:0.9rem;margin-top:0.6rem;text-align:right">* 본 이미지는 분위기 연출용입니다. 실제 관찰 환경은 계절·기상에 따라 달라집니다.</p>
+        </div>
+      </div>
+    </section>
+
+    <section class="container" style="margin-top:2rem">
+      <div class="panel">
+        <h2 style="margin-top:0">왜 이 투어인가?</h2>
+        <p class="lead" style="margin-bottom:0.8rem">제주에서만 느낄 수 있는 고요한 밤의 풍경. 대형 행사와 달리, 소규모로 집중 운영하여 참가자 한 분 한 분에게 깊이 있는 생태 경험을 제공합니다.</p>
+        <ul style="margin-top:0.8rem">
+          <li>지역 보전 원칙에 따라 운영됩니다.</li>
+          <li>아이와 함께할 수 있는 안전한 코스.</li>
+          <li>단체 사진(플래시 없음)과 소소한 기념품 제공.</li>
+        </ul>
+      </div>
+    </section>
+
+    <section class="container" style="margin-top:1.4rem">
+      <div style="display:flex;gap:1rem;flex-wrap:wrap">
+        <a class="btn" href="contact.html">오시는 길 보기</a>
+        <a class="btn ghost" href="https://www.notion.so/your-notion-page" target="_blank" rel="noopener">운영사 소개</a>
+      </div>
+    </section>
+
+  </main>
+
+  <footer class="site-footer">
+    <div class="container">
+      <p>© Jeju Firefly Night — 운영: [업체명]. <a href="https://www.notion.so/your-notion-page" target="_blank" rel="noopener">업체소개</a> · <a href="https://forms.gle/your-google-form" target="_blank" rel="noopener">접수하기</a></p>
+    </div>
+  </footer>
+
+  <script>
+    // Mobile nav toggle
+    document.querySelector('.nav-toggle').addEventListener('click', function(){
+      document.querySelector('.main-nav').classList.toggle('open');
+    });
+
+    // Generate animated fireflies
+    (function(){
+      const field = document.getElementById('field');
+      const COUNT = 18;
+      const w = field.clientWidth || 420;
+      const h = field.clientHeight || 420;
+
+      for(let i=0;i<COUNT;i++){
+        const el = document.createElement('div');
+        el.className = 'firefly';
+        const size = 4 + Math.random()*10;
+        el.style.width = size+'px';
+        el.style.height = size+'px';
+        const left = Math.random()*100;
+        const top = Math.random()*100;
+        el.style.left = left + '%';
+        el.style.top = top + '%';
+        el.style.background = 'radial-gradient(circle, rgba(127,224,107,1) 0%, rgba(127,224,107,0.3) 45%, rgba(127,224,107,0) 70%)';
+        const dur = 6 + Math.random()*8;
+        el.style.animation = `floaty ${dur}s ease-in-out ${Math.random()*-10}s infinite`;
+        el.style.opacity = 0;
+        field.appendChild(el);
+      }
+    })();
+  </script>
+</body>
+</html>
+
+<!-- FILE: about.html -->
+<!doctype html>
+<html lang="ko">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <title>프로그램 안내 — Jeju Firefly Night</title>
+  <meta name="description" content="프로그램 세부 안내: 일정, 참가비, 준비물, 주의사항">
+  <link rel="stylesheet" href="assets/style.css">
+</head>
+<body>
+  <header class="site-header">
+    <div class="container header-inner">
+      <a class="brand" href="index.html">Jeju Firefly Night</a>
+      <nav class="main-nav">
+        <a href="index.html">행사소개</a>
+        <a href="about.html">프로그램 안내</a>
+        <a href="contact.html">오시는 길</a>
+        <a href="https://www.notion.so/your-notion-page" target="_blank" rel="noopener">업체소개</a>
+        <a class="btn" href="https://forms.gle/your-google-form" target="_blank" rel="noopener">접수하기</a>
+      </nav>
+      <button class="nav-toggle" aria-label="메뉴 열기">☰</button>
+    </div>
+  </header>
+
+  <main class="container">
+    <h1>프로그램 안내</h1>
+
+    <section class="program">
+      <h2>기본 일정</h2>
+      <table class="info-table">
+        <tr><th>집합 시간</th><td>18:30 (계절별 변동)</td></tr>
+        <tr><th>소요 시간</th><td>약 2시간</td></tr>
+        <tr><th>참가비</th><td>성인 35,000원 / 청소년 25,000원 / 어린이 20,000원</td></tr>
+        <tr><th>정원</th><td>최대 20명 / 회</td></tr>
+      </table>
+
+      <h3>세부 진행</h3>
+      <ol>
+        <li>안전 브리핑 및 간단한 생태 설명</li>
+        <li>숲길로 이동하여 조용히 관찰(사진 촬영 시 플래시 금지)</li>
+        <li>관찰 후 자유 질의응답 및 해설</li>
+      </ol>
+
+      <h3>준비물</h3>
+      <ul>
+        <li>간편한 복장(긴팔 권장), 편한 신발</li>
+        <li>개인 물병(일회용품 최소화)</li>
+        <li>손전등(적색필터 권장)</li>
+      </ul>
+
+      <h3>주의사항</h3>
+      <p>생태계 보호를 위해 지시에 따르지 않을 경우 즉시 퇴장 조치될 수 있습니다.</p>
+
+      <p class="cta"><a class="btn" href="https://forms.gle/your-google-form" target="_blank" rel="noopener">참가 신청하기</a></p>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <div class="container">
+      <p>© Jeju Firefly Night — 운영: [업체명]. 문의: info@example.com</p>
+    </div>
+  </footer>
+
+  <script>
+    document.querySelector('.nav-toggle').addEventListener('click', function(){
+      document.querySelector('.main-nav').classList.toggle('open');
+    });
+  </script>
+</body>
+</html>
+
+
+<!-- FILE: contact.html -->
+<!doctype html>
+<html lang="ko">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <title>오시는 길 — Jeju Firefly Night</title>
+  <meta name="description" content="행사 장소, 주차, 대중교통 안내">
+  <link rel="stylesheet" href="assets/style.css">
+</head>
+<body>
+  <header class="site-header">
+    <div class="container header-inner">
+      <a class="brand" href="index.html">Jeju Firefly Night</a>
+      <nav class="main-nav">
+        <a href="index.html">행사소개</a>
+        <a href="about.html">프로그램 안내</a>
+        <a href="contact.html">오시는 길</a>
+        <a href="https://www.notion.so/your-notion-page" target="_blank" rel="noopener">업체소개</a>
+        <a class="btn" href="https://forms.gle/your-google-form" target="_blank" rel="noopener">접수하기</a>
+      </nav>
+      <button class="nav-toggle" aria-label="메뉴 열기">☰</button>
+    </div>
+  </header>
+
+  <main class="container contact-page">
+    <h1>오시는 길</h1>
+
+    <section>
+      <h2>행사 위치</h2>
+      <p>제주특별자치도 [구체 주소 입력]</p>
+
+      <!-- 구글지도 임베드: 아래 src를 실제 임베드 링크로 교체하세요 -->
+      <div class="map-wrap">
+        <iframe src="https://www.google.com/maps/embed?pb=YOUR_MAP_EMBED_CODE" width="100%" height="360" style="border:0;" allowfullscreen="" loading="lazy"></iframe>
+      </div>
+
+      <h3>대중교통</h3>
+      <p>가까운 버스 정류장: ○○ 정류장 (도보 10분) — 시간표는 버스 운영사 확인.</p>
+
+      <h3>자가용/주차 안내</h3>
+      <p>현장 주차 가능(20대) / 주차 공간이 제한적이니 가급적 카풀을 권장합니다.</p>
+
+      <h3>만남 장소</h3>
+      <p>주차장 입구 오른쪽 대기 공간 또는 지정 카카오톡 채널(운영 시)로 안내합니다.</p>
+    </section>
+
+    <aside class="contact-aside">
+      <h4>문의</h4>
+      <p>운영: [업체명]<br>전화: 010-1234-5678<br>이메일: info@example.com</p>
+      <p><a class="btn" href="https://forms.gle/your-google-form" target="_blank" rel="noopener">지금 접수하기</a></p>
+    </aside>
+  </main>
+
+  <footer class="site-footer">
+    <div class="container">
+      <p>© Jeju Firefly Night — 운영: [업체명].</p>
+    </div>
+  </footer>
+
+  <script>
+    document.querySelector('.nav-toggle').addEventListener('click', function(){
+      document.querySelector('.main-nav').classList.toggle('open');
+    });
+  </script>
+</body>
+</html>
+
+
+<!-- FILE: assets/style.css -->
+/* 기본 스타일 (간결하고 반응형) */
+:root{
+  --bg:#041025; /* 밤색 계열 */
+  --accent:#7FE06B; /* 반딧불 초록 포인트 */
+  --muted:#9aa6b2;
+  --container:1100px;
+}
+*{box-sizing:border-box}
+body{margin:0;font-family: 'Noto Sans KR', system-ui, -apple-system, 'Segoe UI', Roboto, 'Helvetica Neue', Arial; color:#e8eef6; background:linear-gradient(180deg,#021026 0%, #041025 60%);}
+.container{max-width:var(--container);margin:0 auto;padding:1rem}
+.header-inner{display:flex;align-items:center;justify-content:space-between;padding:0.75rem 0}
+.brand{font-weight:700;color:var(--accent);text-decoration:none}
+.main-nav{display:flex;gap:1rem;align-items:center}
+.main-nav a{color:inherit;text-decoration:none;padding:0.4rem 0.6rem}
+.btn{background:var(--accent);color:#012; padding:0.5rem 0.8rem;border-radius:8px;text-decoration:none;font-weight:600}
+.btn.ghost{background:transparent;border:1px solid rgba(255,255,255,0.08)}
+.btn.large{padding:0.8rem 1.2rem;font-size:1.05rem}
+.nav-toggle{display:none;background:transparent;border:0;color:inherit;font-size:1.2rem}
+
+.hero{background-image:url('../assets/hero.jpg');background-size:cover;background-position:center;padding:6rem 0;}
+.hero-inner{background:linear-gradient(180deg, rgba(1,4,10,0.4), rgba(1,4,10,0.6));padding:3rem;border-radius:12px}
+.hero h1{font-size:2rem;margin:0 0 0.5rem;color:#fff}
+.lead{color:var(--muted);margin-bottom:1rem}
+.highlights{display:grid;grid-template-columns:repeat(3,1fr);gap:1rem;margin-top:2rem}
+.highlights article{background:rgba(255,255,255,0.03);padding:1rem;border-radius:8px}
+.program-preview{margin-top:2rem}
+.info-table{width:100%;border-collapse:collapse;background:rgba(255,255,255,0.02);margin-bottom:1rem}
+.info-table th, .info-table td{padding:0.6rem;border-bottom:1px solid rgba(255,255,255,0.03);text-align:left}
+.gallery .grid{display:grid;grid-template-columns:1fr 1fr 1fr;gap:0.6rem}
+.gallery img{width:100%;height:200px;object-fit:cover;border-radius:8px}
+.card{background:rgba(255,255,255,0.03);padding:1rem;border-radius:8px}
+.note{color:var(--muted);font-size:0.9rem}
+.site-footer{padding:1.2rem 0;text-align:center;color:var(--muted);border-top:1px solid rgba(255,255,255,0.03);margin-top:2rem}
+
+/* 레이아웃: contact page */
+.contact-page{display:grid;grid-template-columns:1fr 320px;gap:1.2rem}
+.contact-aside{background:rgba(255,255,255,0.03);padding:1rem;border-radius:8px}
+.map-wrap{border-radius:8px;overflow:hidden}
+
+/* 반응형 */
+@media(max-width:900px){
+  .highlights{grid-template-columns:1fr}
+  .gallery .grid{grid-template-columns:1fr}
+  .container{padding:0.75rem}
+  .contact-page{grid-template-columns:1fr}
+  .nav-toggle{display:block}
+  .main-nav{position:fixed;right:0;top:64px;background:rgba(2,6,12,0.95);flex-direction:column;padding:1rem;border-radius:8px;transform:translateX(110%);transition:transform .22s}
+  .main-nav.open{transform:translateX(0)}
+}
+
+/* 접근성 작은 개선 */
+a:focus, button:focus{outline:2px solid var(--accent);outline-offset:2px}
